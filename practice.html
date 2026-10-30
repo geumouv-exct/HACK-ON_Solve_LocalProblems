@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f7f7f4" />
+    <meta name="description" content="서초구 강좌 신청 과정을 안전하게 연습하는 화면입니다." />
+    <title>신청 연습 · OO 클래스</title>
+    <link rel="stylesheet" href="./practice.css" />
+    <script defer src="./programs.js"></script>
+    <script defer src="./practice.js"></script>
+  </head>
+  <body>
+    <header class="portal-topbar">
+      <div class="portal-topbar-inner"><a class="portal-logo" href="./index.html"><span class="portal-symbol">서초</span><b>서초구청</b></a><span>소통과 참여　·　통합예약</span><nav class="portal-nav" aria-label="홈 이동"><a class="return-link home-icon-link" href="./index.html" aria-label="홈 화면으로 돌아가기"><svg aria-hidden="true" viewBox="0 0 24 24"><path d="m3 10 9-7 9 7M5.5 9v11h13V9M9.5 20v-6h5v6"/></svg></a></nav></div>
+    </header>
+
+    <main class="practice-layout">
+      <div class="practice-warning" role="note"><b>신청 연습 화면</b><span>실제 신청·결제는 되지 않습니다. 개인정보나 카드 정보는 입력하지 마세요.</span></div>
+      <nav class="breadcrumb" aria-label="현재 위치">홈　›　통합예약　›　강좌예약</nav>
+      <div class="page-heading"><div><p class="page-eyebrow">OO자치회관</p><h1>강좌예약</h1></div><div class="page-count" id="pageCount">연습 1단계</div></div>
+      <div class="step-track" id="stepTrack" aria-label="신청 연습 진행"></div>
+      <section class="portal-content" id="portalContent"></section>
+    </main>
+
+    <aside class="coach" aria-label="AI 신청 도우미">
+      <div class="coach-head"><span class="coach-avatar" aria-hidden="true">AI</span><div><b>신청 도우미</b><small id="coachCounter">1단계 안내</small></div><span class="coach-live" aria-hidden="true"></span><button class="coach-close" id="closeCoach" type="button" aria-label="신청 도우미 닫기">×</button></div>
+      <p class="coach-message" id="coachMessage" aria-live="polite"></p>
+      <div class="coach-actions"><button class="coach-speak" id="speakGuide" type="button">안내 듣기</button><button class="coach-back" id="coachBack" type="button" hidden>이전 단계</button><button class="coach-next" id="coachNext" type="button">다음 단계</button><button class="coach-example" id="fillExample" type="button" hidden>예시 입력</button></div>
+    </aside>
+    <button class="coach-reopen" id="reopenCoach" type="button" hidden><span aria-hidden="true">✦</span> 신청 도우미 다시 보기</button>
+  </body>
+</html>

@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#f6f4ef" />
+    <meta name="description" content="OO동 공공시설 강좌와 프로그램 공고를 크게 보기 쉽게 확인하세요." />
+    <title>OO 클래스 — OO동 강좌 찾기</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <script defer src="./programs.js"></script>
+    <script defer src="./app.js"></script>
+  </head>
+  <body>
+    <div class="app-shell">
+      <header class="site-header">
+        <a class="brand" href="#top" aria-label="홈 화면으로 이동">
+          <span class="brand-mark" aria-hidden="true">
+            <svg viewBox="0 0 40 40" fill="none"><path d="M20 34V17.5M20 23.2C12.5 23.2 7 19 7 11.4c7.7-.5 13 3.1 13 11.8ZM20 18.5C20 10.5 25 5.7 33 6c.1 7.9-4.8 12.9-13 12.5Z" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/><path d="M12.4 32.8h15.2" stroke="currentColor" stroke-width="2.2" stroke-linecap="round"/></svg>
+          </span>
+        </a>
+      </header>
+      <nav class="view-switcher" aria-label="화면 메뉴">
+        <button class="nav-link active" id="browseNav" type="button" aria-current="page">강좌 찾기</button>
+        <button class="nav-link saved-nav" id="savedNav" type="button" aria-current="false">관심 목록 <span class="saved-count" id="savedCount">0</span></button>
+        <button class="nav-link saved-nav" id="timetableNav" type="button" aria-current="false">내 시간표 <span class="saved-count" id="timetableCount">0</span></button>
+        <a class="mock-application-link" href="./practice.html?flow=choose">모의 신청</a>
+      </nav>
+
+      <main id="top">
+        <section class="hero" aria-labelledby="heroTitle">
+          <div class="hero-copy">
+            <h1 id="heroTitle">OO동 강좌 찾기</h1>
+            <p class="hero-description">2026년 4분기 · OO자치회관</p>
+            <form class="search-box" id="searchForm" role="search">
+              <span class="search-symbol" aria-hidden="true">
+                <svg viewBox="0 0 24 24" fill="none"><circle cx="10.8" cy="10.8" r="6.8" stroke="currentColor" stroke-width="1.8"/><path d="m16 16 4.4 4.4" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg>
+              </span>
+              <label class="sr-only" for="searchInput">강좌 이름 검색</label>
+              <input id="searchInput" type="search" placeholder="강좌 이름을 입력하세요" autocomplete="off" />
+              <button class="search-submit" type="submit">검색</button>
+            </form>
+          </div>
+        </section>
+
+        <section class="status-note" role="status" aria-label="접수 안내">
+          <div class="status-copy">
+            <strong>4분기 강좌 접수가 마감됐습니다.</strong>
+            <span>잔여석·대기 접수 문의</span>
+          </div>
+          <a class="phone-button" href="tel:0221555378">☎ 02-2155-5378 전화</a>
+          <a class="notice-link" href="https://www.seocho.go.kr/site/seocho/ex/lecture/View.do?clIdx=L00018738" target="_blank" rel="noreferrer">모집 공고 보기 ↗</a>
+        </section>
+
+        <section class="program-section" id="programSection" aria-labelledby="programTitle">
+          <div class="section-heading">
+            <div>
+              <h2 id="programTitle">관심 분야를 골라보세요</h2>
+            </div>
+            <span id="resultCount" aria-live="polite">17개 프로그램</span>
+          </div>
+
+          <div class="filter-toolbar">
+            <div class="category-filters" role="group" aria-label="관심 분야">
+              <button class="filter-chip selected" type="button" data-category="all" aria-pressed="true">전체 <span>17</span></button>
+              <button class="filter-chip" type="button" data-category="senior" aria-pressed="false">스마트폰·AI <span>2</span></button>
+              <button class="filter-chip" type="button" data-category="wellness" aria-pressed="false">건강·운동 <span>6</span></button>
+              <button class="filter-chip" type="button" data-category="learning" aria-pressed="false">취미·배움 <span>7</span></button>
+              <button class="filter-chip" type="button" data-category="kids" aria-pressed="false">아이·가족 <span>1</span></button>
+              <button class="filter-chip" type="button" data-category="library" aria-pressed="false">도서관 <span>1</span></button>
+            </div>
+          </div>
+
+          <div class="active-query" id="activeQuery" hidden>
+            <span id="queryText"></span><button type="button" id="clearQuery">검색 지우기</button>
+          </div>
+
+          <div class="content-layout">
+            <div class="program-grid" id="programGrid" aria-live="polite"></div>
+          </div>
+          <div class="empty-state" id="emptyState" hidden>
+            <h3>찾는 강좌가 없습니다.</h3>
+            <button type="button" id="emptyReset">전체 강좌 보기</button>
+          </div>
+        </section>
+
+        <section class="saved-section" id="savedSection" hidden aria-labelledby="savedTitle">
+          <div class="saved-heading">
+            <div><button class="back-to-browse" type="button" id="backToBrowse">← 강좌 찾기</button><h2 id="savedTitle">관심 목록</h2><p class="saved-note">저장한 강좌 모음입니다. 수강 신청은 별도로 해야 합니다.</p></div>
+            <span class="saved-overview"><b id="savedOverviewCount">0</b>개</span>
+          </div>
+          <div class="saved-list" id="savedList"></div>
+          <div class="saved-empty" id="savedEmpty" hidden><h3>저장한 강좌가 없습니다.</h3><button type="button" id="savedEmptyBrowse">강좌 찾기</button></div>
+        </section>
+
+        <section class="timetable-section" id="timetableSection" hidden aria-labelledby="timetableTitle">
+          <div class="saved-heading">
+            <div><button class="back-to-browse" type="button" id="backFromTimetable">← 강좌 찾기</button><h2 id="timetableTitle">내 시간표</h2><p class="saved-note">신청 연습을 마치고 시간표에 담은 강좌예요. 실제 수강 등록 상태와는 달라요.</p></div>
+            <span class="saved-overview"><b id="timetableOverviewCount">0</b>개</span>
+          </div>
+          <div class="timetable-notice">이 시간표는 이 브라우저에만 저장됩니다. 실제 신청 여부는 서초구청에서 확인해 주세요.</div>
+          <div class="timetable-scroll" id="timetableScroll" hidden></div>
+          <div class="saved-empty" id="timetableEmpty" hidden><h3>아직 시간표에 담긴 강좌가 없어요.</h3><p>신청 연습을 마치면 이곳에 자동으로 표시돼요.</p><button type="button" id="timetableEmptyBrowse">강좌 찾기</button></div>
+        </section>
+      </main>
+
+      <footer class="site-footer"><span>공식 공고 확인일 2026.10.29</span><a href="https://www.seocho.go.kr/site/seocho/ex/lecture/List.do?scOrg=29280000" target="_blank" rel="noreferrer">OO자치회관 공식 공고 ↗</a><a href="https://www.seocholib.or.kr/" target="_blank" rel="noreferrer">서초구립도서관 ↗</a></footer>
+    </div>
+
+    <dialog class="program-dialog" id="programDialog" aria-labelledby="dialogTitle">
+      <div class="dialog-head"><span class="dialog-kicker" id="dialogKicker">강좌 정보</span><button class="dialog-close" id="dialogClose" type="button" aria-label="창 닫기">닫기</button></div>
+      <div class="dialog-body" id="dialogBody"></div>
+    </dialog>
+    <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  </body>
+</html>
